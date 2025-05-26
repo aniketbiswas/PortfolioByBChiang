@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import anime from 'animejs';
 import styled from 'styled-components';
-import { IconLoader } from '@components/icons';
+import pixelDuckGif from '../images/pixel-duck.gif';
 
 const StyledLoader = styled.div`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -17,21 +17,28 @@ const StyledLoader = styled.div`
   background-color: var(--dark-navy);
   z-index: 99;
 
-  .logo-wrapper {
+  .loader-wrapper {
     width: max-content;
-    max-width: 100px;
+    max-width: 150px;
     transition: var(--transition);
     opacity: ${props => (props.isMounted ? 1 : 0)};
-    svg {
+    
+    img {
       display: block;
       width: 100%;
-      height: 100%;
+      height: auto;
       margin: 0 auto;
-      fill: none;
       user-select: none;
-      #B {
-        opacity: 0;
-      }
+      animation: pulse 1.2s ease-in-out infinite alternate;
+    }
+  }
+  
+  @keyframes pulse {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.1);
     }
   }
 `;
@@ -40,39 +47,29 @@ const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   const animate = () => {
-    const loader = anime.timeline({
-      complete: () => finishLoading(),
-    });
-
-    loader
-      .add({
-        targets: '#logo path',
-        delay: 300,
-        duration: 1500,
-        easing: 'easeInOutQuart',
-        strokeDashoffset: [anime.setDashoffset, 0],
-      })
-      .add({
-        targets: '#logo #B',
-        duration: 700,
-        easing: 'easeInOutQuart',
-        opacity: 1,
-      })
-      .add({
-        targets: '#logo',
-        delay: 500,
-        duration: 300,
-        easing: 'easeInOutQuart',
-        opacity: 0,
-        scale: 0.1,
-      })
-      .add({
-        targets: '.loader',
-        duration: 200,
-        easing: 'easeInOutQuart',
-        opacity: 0,
-        zIndex: -1,
+    // Set a timer to hide the loader after a delay
+    setTimeout(() => {
+      const loader = anime.timeline({
+        complete: () => finishLoading(),
       });
+
+      loader
+        .add({
+          targets: '.loader-gif',
+          delay: 0,
+          duration: 500,
+          easing: 'easeInOutQuart',
+          opacity: 0,
+          scale: 0.8,
+        })
+        .add({
+          targets: '.loader',
+          duration: 200,
+          easing: 'easeInOutQuart',
+          opacity: 0,
+          zIndex: -1,
+        });
+    }, 2000); // Show the duck for 2 seconds before fading
   };
 
   useEffect(() => {
@@ -85,8 +82,12 @@ const Loader = ({ finishLoading }) => {
     <StyledLoader className="loader" isMounted={isMounted}>
       <Helmet bodyAttributes={{ class: `hidden` }} />
 
-      <div className="logo-wrapper">
-        <IconLoader />
+      <div className="loader-wrapper">
+        <img
+          src={pixelDuckGif}
+          alt="Loading Animation"
+          className="loader-gif"
+        />
       </div>
     </StyledLoader>
   );

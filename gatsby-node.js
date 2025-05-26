@@ -7,6 +7,30 @@
 const path = require('path');
 const _ = require('lodash');
 
+// Define schema for custom fields
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+    type MarkdownRemarkFrontmatter {
+      title: String
+      date: Date @dateformat
+      company: String
+      location: String
+      range: String
+      url: String
+      github: String
+      external: String
+      tech: [String]
+      showInProjects: Boolean
+      ios: String
+      android: String
+      cover: File @fileByRelativePath
+      cta: String
+    }
+  `;
+  createTypes(typeDefs);
+};
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
   const postTemplate = path.resolve(`src/templates/post.js`);

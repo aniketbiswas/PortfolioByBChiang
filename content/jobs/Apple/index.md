@@ -1,13 +1,13 @@
 ---
-date: '2017-12-21'
-title: 'UI Engineer Co-op'
+date: '2022-08-01'
+title: 'Software Engineering Intern'
 company: 'Apple'
 location: 'Cupertino, CA'
-range: 'July - December 2017'
-url: 'https://www.apple.com/music/'
+range: 'August 2022 - November 2022'
+url: 'https://www.apple.com/'
 ---
 
-- Developed and styled interactive web applications for Apple Music using Ember and SCSS
-- Built and shipped the Apple Music Extension for Facebook Messenger leveraging third-party and internal API integrations
-- Architected and implemented the user interface of Apple Music's embeddable web player widget for in-browser user authorization and full song playback
-- Contributed extensively to the creation of MusicKit JS, a public-facing JavaScript SDK for embedding Apple Music players into web applications
+- Developed and integrated automated test scripts that decreased deployment time by 20% and improved reliability of Java-based microservices
+- Built Python-based distributed data mining tool to analyze service health metrics, providing actionable insights for optimization
+- Enhanced repository architecture to support A/B testing framework, empowering data-driven feature development
+- Led documentation effort for critical microservices, creating comprehensive guides that reduced onboarding time by 30%

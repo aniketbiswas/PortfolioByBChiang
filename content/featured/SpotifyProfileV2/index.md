@@ -1,6 +1,19 @@
 ---
-date: '3'
-title: 'Build a Spotify Connected App'
+date: '5'
+title: 'Operator Insights Engine'
+cover: './course-card.png'
+external: ''
+tech:
+  - React
+  - TypeScript
+  - Azure
+  - Real-time Analytics
+  - Data Visualization
+---
+
+Designed and built the Operator Insights Engine architecture for Microsoft Viva, enabling real-time analytics and data-driven decision-making for tenant administrators. This system processes millions of data points to provide actionable insights on platform usage, performance metrics, and user engagement.
+
+The architecture leverages Azure services to deliver scalable analytics capabilities with minimal latency, supporting interactive dashboards and proactive monitoring for enterprise customers. Implemented sophisticated data aggregation algorithms that maintain privacy compliance while delivering valuable business intelligence.tle: 'Build a Spotify Connected App'
 cover: './course-card.png'
 external: 'https://www.newline.co/courses/build-a-spotify-connected-app'
 cta: 'https://www.newline.co/courses/build-a-spotify-connected-app'
