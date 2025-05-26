@@ -15,12 +15,14 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "dev": "nvm use 22 && gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "fix-husky": "rm -rf .husky && husky install && npx husky add .husky/pre-commit \"npm run lint-staged\""
   },
   "lint-staged": {
     "*.{js,css,json,md}": [
