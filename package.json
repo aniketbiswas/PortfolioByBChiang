@@ -1,11 +1,11 @@
 {
-  "name": "v4",
-  "description": "Personal Website V4",
+  "name": "aniketbiswas-portfolio",
+  "description": "Aniket Biswas - Personal Portfolio Website",
   "version": "1.0.0",
-  "author": "Brittany Chiang <brittany.chiang@gmail.com>",
+  "author": "Aniket Biswas <aniketbiswas100@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bchiang7/v4"
+    "url": "https://github.com/aniketbiswas/aniketbiswas-dev"
   },
   "keywords": [
     "gatsby"
