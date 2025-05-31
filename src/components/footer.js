@@ -107,7 +107,7 @@ const Footer = () => {
       <StyledCredit tabindex="-1">
         <a href="https://brittanychiang.com" target="_blank" rel="noopener noreferrer">
           <div>Inspired by Brittany Chiang</div>
-          {githubInfo.stars !== null && githubInfo.forks !== null && (
+          {githubInfo.stars !== null && githubInfo.forks !== null ? (
             <div className="github-stats">
               <span>
                 <Icon name="Star" />
@@ -118,7 +118,7 @@ const Footer = () => {
                 <span>{githubInfo.forks.toLocaleString()}</span>
               </span>
             </div>
-          )}
+          ) : null}
         </a>
       </StyledCredit>
     </StyledFooter>
