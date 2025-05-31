@@ -7,7 +7,8 @@ range: 'July 2020 - March 2023'
 url: 'https://www.microsoft.com/'
 ---
 
-- Designed and implemented foundational data partitioning framework supporting multiple concurrent app instances in shared JavaScript runtime
-- Built high-performance link resolution system processing millions of requests with 99.9% reliability
-- Collaborated across engineering teams to optimize architecture for enhanced performance and reliability
-- Created developer tooling that reduced development cycles by 60+ hours monthly, accelerating feature delivery
+- Contributed to frontend components and features for Microsoft Viva applications
+- Built navigation and routing functionality for link resolution in the application
+- Developed TypeScript utilities that simplified API integration for team members
+- Created developer tools that improved workflow for common development tasks
+- Collaborated with design and product teams to implement UX improvements

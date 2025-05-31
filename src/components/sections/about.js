@@ -125,7 +125,16 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['JavaScript/TypeScript', 'Node.js', 'React', 'AWS', 'Azure', 'Kubernetes', 'Docker', 'Python'];
+  const skills = [
+    'JavaScript/TypeScript',
+    'React/React Native',
+    'Node.js',
+    'Python',
+    'REST APIs',
+    'GraphQL',
+    'System Design',
+    'Performance Optimization',
+  ];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -135,24 +144,24 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Aniket and I enjoy building scalable systems and developer tools.
-              My interest in software development started during my undergraduate studies at VIT
-              where I discovered my passion for solving complex problems through code.
+              Hello! I'm Aniket, a Software Engineer at Microsoft with experience in building and
+              optimizing mobile applications and frontend systems. As a member of the Microsoft Viva
+              Connections Mobile team, I work on the React Native application that serves millions
+              of users, focusing primarily on performance optimization and user experience.
             </p>
 
             <p>
-              Fast-forward to today, and I've had the privilege of working at{' '}
-              <a href="https://www.microsoft.com/">Microsoft</a> where I've focused on designing and implementing
-              foundational frameworks and high-performance systems. I've also gained experience at{' '}
-              <a href="https://www.apple.com/">Apple</a> where I worked on enhancing their internal tooling
-              and infrastructure.
+              My expertise includes frontend development with React and React Native, and I enjoy
+              working on performance optimization and developer tooling. I've previously contributed
+              to projects at <a href="https://farebond.com/">Farebond</a> and{' '}
+              <a href="https://research.samsung.com/sri-b">Samsung Research</a>, where I worked on
+              various aspects from flight booking systems to sensor data processing.
             </p>
 
             <p>
-              My main focus these days is on building reliable distributed systems, optimizing
-              performance for large-scale applications, and creating developer tools that enhance
-              productivity. I'm passionate about clean code, system architecture, and continuous
-              learning in the ever-evolving tech landscape.
+              I'm passionate about creating usable and performant applications, writing clean code,
+              and building tools that make development more efficient. I enjoy solving complex
+              problems with a focus on delivering great user experiences and maintainable codebases.
             </p>
 
             <p>Here are a few technologies I've been working with recently:</p>

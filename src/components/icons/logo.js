@@ -1,22 +1,73 @@
-import React from 'react';
-
 const IconLogo = () => (
   <svg id="logo" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
     <title>Logo</title>
-    <g transform="translate(-8.000000, -2.000000)">
-      <g transform="translate(11.000000, 5.000000)">
-        <polygon
-          id="Shape"
-          stroke="currentColor"
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          points="39 0 0 22 0 67 39 90 78 68 78 23"
-        />
+    <defs>
+      <style>
+        {`
+          .typewriter-container {
+            overflow: hidden;
+          }
+          
+          .letter-a {
+            animation: typeA 4s infinite;
+            opacity: 0;
+            transform: translateX(-8px);
+          }
+          
+          .letter-b {
+            animation: typeB 4s infinite;
+            opacity: 0;
+            transform: translateX(-8px);
+          }
+          
+          .cursor {
+            animation: typeCursor 4s infinite;
+            opacity: 0;
+          }
+          
+          @keyframes typeA {
+            0%, 10% { opacity: 0; transform: translateX(-8px); }
+            15%, 70% { opacity: 1; transform: translateX(0); }
+            75%, 100% { opacity: 0; transform: translateX(-8px); }
+          }
+          
+          @keyframes typeB {
+            0%, 25% { opacity: 0; transform: translateX(-8px); }
+            30%, 70% { opacity: 1; transform: translateX(0); }
+            75%, 100% { opacity: 0; transform: translateX(-8px); }
+          }
+          
+          @keyframes typeCursor {
+            0%, 15% { opacity: 1; }
+            16%, 29% { opacity: 0; }
+            30%, 70% { opacity: 1; }
+            71%, 74% { opacity: 0; }
+            75%, 100% { opacity: 1; }
+          }
+        `}
+      </style>
+    </defs>
+
+    <g className="typewriter-container" transform="translate(8, 20)">
+      {/* Letter A - larger and better positioned */}
+      <g className="letter-a">
         <path
-          d="M45.691667,45.15 C48.591667,46.1 50.691667,48.95 50.691667,52.2 C50.691667,57.95 46.691667,61 40.291667,61 L28.541667,61 L28.541667,30.3 L39.291667,30.3 C45.691667,30.3 49.691667,33.15 49.691667,38.65 C49.691667,41.95 47.941667,44.35 45.691667,45.15 Z M33.591667,43.2 L39.241667,43.2 C42.791667,43.2 44.691667,41.85 44.691667,38.95 C44.691667,36.05 42.791667,34.8 39.241667,34.8 L33.591667,34.8 L33.591667,43.2 Z M33.591667,47.5 L33.591667,56.5 L40.191667,56.5 C43.691667,56.5 45.591667,54.75 45.591667,52 C45.591667,49.2 43.691667,47.5 40.191667,47.5 L33.591667,47.5 Z"
+          d="M8,10 L20,10 L34,60 L26,60 L23.5,50 L4.5,50 L2,60 L-6,60 L8,10 Z M7,42 L21,42 L14,22 L7,42 Z"
           fill="currentColor"
         />
+      </g>
+
+      {/* Letter B - fixed curve alignment */}
+      <g className="letter-b">
+        <path
+          d="M38,10 L38,60 L58,60 C66,60 72,55 72,48 C72,44 69,41 65,40 C68,38 70,34 70,29 C70,22 66,10 56,10 L38,10 Z M46,18 L54,18 C58,18 60,20 60,24 C60,28 58,30 54,30 L46,30 L46,18 Z M46,38 L56,38 C60,38 62,40 62,44 C62,48 60,52 56,52 L46,52 L46,38 Z"
+          fill="currentColor"
+        />
+      </g>
+
+      {/* Typing cursor */}
+      <g className="cursor">
+        <rect x="76" y="35" width="3" height="20" fill="currentColor" rx="1" />
       </g>
     </g>
   </svg>

@@ -10,6 +10,10 @@ module.exports = {
       name: 'Linkedin',
       url: 'https://www.linkedin.com/in/aniketbiswas/',
     },
+    {
+      name: 'LeetCode',
+      url: 'https://leetcode.com/aniketbiswas100/',
+    },
     // {
     //   name: 'Twitter',
     //   url: 'https://twitter.com/aniket__biswas',
@@ -28,6 +32,10 @@ module.exports = {
     {
       name: 'Work',
       url: '/#projects',
+    },
+    {
+      name: 'Blogs',
+      url: '/#blogs',
     },
     {
       name: 'Contact',

@@ -7,9 +7,9 @@ range: 'March 2023 - Present'
 url: 'https://www.microsoft.com/'
 ---
 
-- Architected core components of Viva Connections Mobile from early stages to 7M+ MAU, establishing foundation for enterprise-scale performance
-- Optimized critical React Native features that significantly improved load times and reduced memory consumption, enhancing experience for 1M+ users
-- Designed Operator Insights engine architecture, enabling real-time analytics and data-driven decision making for tenant administrators
-- Led migration from GraphQL to REST architecture with zero downtime, implementing a resilient pattern using Context API and custom hooks
-- Established system for rapid resolution of critical customer issues within SLA, maintaining enterprise-grade reliability
-- Led engineering excellence initiative that measurably improved team performance and knowledge sharing
+- Contributed to core components of Microsoft Viva Connections Mobile React Native application
+- Improved app performance by optimizing rendering and reducing memory consumption in key components
+- Worked on UI features and components that enhanced user experience and accessibility
+- Implemented migration from GraphQL to REST API endpoints using React Context and custom hooks
+- Participated in on-call rotations and resolved critical customer issues
+- Developed internal tools that streamlined debugging and testing processes

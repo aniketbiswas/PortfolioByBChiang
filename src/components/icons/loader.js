@@ -3,25 +3,74 @@ import React from 'react';
 const IconLoader = () => (
   <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
     <title>Loader Logo</title>
-    <g>
-      <g id="B" transform="translate(11.000000, 5.000000)">
+    <defs>
+      <style>
+        {`
+          .loader-typewriter {
+            overflow: hidden;
+          }
+          
+          .loader-letter-a {
+            animation: loaderTypeA 3s infinite;
+            opacity: 0;
+            transform: translateX(-8px);
+          }
+          
+          .loader-letter-b {
+            animation: loaderTypeB 3s infinite;
+            opacity: 0;
+            transform: translateX(-8px);
+          }
+          
+          .loader-cursor {
+            animation: loaderTypeCursor 3s infinite;
+            opacity: 0;
+          }
+          
+          @keyframes loaderTypeA {
+            0%, 15% { opacity: 0; transform: translateX(-8px); }
+            20%, 75% { opacity: 1; transform: translateX(0); }
+            80%, 100% { opacity: 0; transform: translateX(-8px); }
+          }
+          
+          @keyframes loaderTypeB {
+            0%, 30% { opacity: 0; transform: translateX(-8px); }
+            35%, 75% { opacity: 1; transform: translateX(0); }
+            80%, 100% { opacity: 0; transform: translateX(-8px); }
+          }
+          
+          @keyframes loaderTypeCursor {
+            0%, 20% { opacity: 1; }
+            21%, 34% { opacity: 0; }
+            35%, 75% { opacity: 1; }
+            76%, 79% { opacity: 0; }
+            80%, 100% { opacity: 1; }
+          }
+        `}
+      </style>
+    </defs>
+
+    <g className="loader-typewriter" transform="translate(8, 25)">
+      {/* Letter A - larger and cleaner */}
+      <g className="loader-letter-a">
         <path
-          d="M45.691667,45.15 C48.591667,46.1 50.691667,48.95 50.691667,52.2 C50.691667,57.95 46.691667,61 40.291667,61 L28.541667,61 L28.541667,30.3 L39.291667,30.3 C45.691667,30.3 49.691667,33.15 49.691667,38.65 C49.691667,41.95 47.941667,44.35 45.691667,45.15 Z M33.591667,43.2 L39.241667,43.2 C42.791667,43.2 44.691667,41.85 44.691667,38.95 C44.691667,36.05 42.791667,34.8 39.241667,34.8 L33.591667,34.8 L33.591667,43.2 Z M33.591667,47.5 L33.591667,56.5 L40.191667,56.5 C43.691667,56.5 45.591667,54.75 45.591667,52 C45.591667,49.2 43.691667,47.5 40.191667,47.5 L33.591667,47.5 Z"
+          d="M8,5 L18,5 L30,50 L24,50 L22,42 L6,42 L4,50 L-2,50 L8,5 Z M8,35 L20,35 L14,18 L8,35 Z"
           fill="currentColor"
         />
       </g>
-      <path
-        stroke="currentColor"
-        strokeWidth="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M 50, 5
-                  L 11, 27
-                  L 11, 72
-                  L 50, 95
-                  L 89, 73
-                  L 89, 28 z"
-      />
+
+      {/* Letter B - fixed curve alignment */}
+      <g className="loader-letter-b">
+        <path
+          d="M34,5 L34,50 L50,50 C56,50 60,46 60,41 C60,38 58,36 55,35 C57,34 59,31 59,27 C59,22 56,5 47,5 L34,5 Z M40,11 L46,11 C49,11 50,12 50,16 C50,19 49,21 46,21 L40,21 L40,11 Z M40,27 L48,27 C51,27 52,29 52,32 C52,35 51,39 48,39 L40,39 L40,27 Z"
+          fill="currentColor"
+        />
+      </g>
+
+      {/* Typing cursor */}
+      <g className="loader-cursor">
+        <rect x="64" y="30" width="2.5" height="16" fill="currentColor" rx="1" />
+      </g>
     </g>
   </svg>
 );

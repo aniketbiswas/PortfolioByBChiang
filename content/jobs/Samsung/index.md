@@ -7,6 +7,7 @@ range: 'May 2019 - July 2019'
 url: 'https://research.samsung.com/sri-b'
 ---
 
-- Created deep learning solution that eliminated manual calibration for wearable controllers
-- Designed RNN architecture achieving 75% error reduction with custom loss function for IMU sensor arrays
-- Implemented quaternion space data augmentation techniques that significantly improved model robustness
+- Worked on a Python application for processing sensor data from wearable devices
+- Used machine learning techniques to improve the accuracy of motion tracking
+- Created data processing pipeline for sensor calibration
+- Built visualization tools to help analyze sensor patterns and accuracy

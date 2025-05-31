@@ -7,7 +7,7 @@ import { navLinks } from '@config';
 import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
-import { IconLogo, IconHex } from '@components/icons';
+import pixelComputer from '@images/pixel-computer.png';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -67,32 +67,19 @@ const StyledNav = styled.nav`
 
     a {
       color: var(--green);
-      width: 42px;
-      height: 42px;
+      width: 120px;
+      height: 120px;
       position: relative;
-      z-index: 1;
-
-      .hex-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        @media (prefers-reduced-motion: no-preference) {
-          transition: var(--transition);
-        }
-      }
 
       .logo-container {
         position: relative;
-        z-index: 1;
-        svg {
-          fill: none;
+        img {
+          width: 120px;
+          height: 120px;
           user-select: none;
+          image-rendering: pixelated;
           @media (prefers-reduced-motion: no-preference) {
             transition: var(--transition);
-          }
-          polygon {
-            fill: var(--navy);
           }
         }
       }
@@ -100,10 +87,7 @@ const StyledNav = styled.nav`
       &:hover,
       &:focus {
         outline: 0;
-        transform: translate(-4px, -4px);
-        .hex-container {
-          transform: translate(4px, 3px);
-        }
+        transform: translate(-2px, -2px);
       }
     }
   }
@@ -185,20 +169,14 @@ const Nav = ({ isHome }) => {
     <div className="logo" tabIndex="-1">
       {isHome ? (
         <a href="/" aria-label="home">
-          <div className="hex-container">
-            <IconHex />
-          </div>
           <div className="logo-container">
-            <IconLogo />
+            <img src={pixelComputer} alt="Pixel Computer Logo" />
           </div>
         </a>
       ) : (
         <Link to="/" aria-label="home">
-          <div className="hex-container">
-            <IconHex />
-          </div>
           <div className="logo-container">
-            <IconLogo />
+            <img src={pixelComputer} alt="Pixel Computer Logo" />
           </div>
         </Link>
       )}

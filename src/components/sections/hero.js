@@ -61,16 +61,16 @@ const Hero = () => {
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Aniket Biswas.</h2>;
-  const three = <h3 className="big-heading">I build innovative cloud solutions.</h3>;
+  const three = <h3 className="big-heading">I build engaging web & mobile experiences.</h3>;
   const four = (
     <>
       <p>
-        I'm a Software Engineer specializing in building scalable cloud solutions and distributed systems.
-        Currently, I'm focused on architecting resilient platforms and developer tools at{' '}
+        I'm a Software Engineer specializing in frontend development with React and React Native.
+        Currently, I'm working on the Viva Connections Mobile team at{' '}
         <a href="https://www.microsoft.com/" target="_blank" rel="noreferrer">
           Microsoft
         </a>
-        .
+        , focusing on performance optimization and developer tools.
       </p>
     </>
   );
