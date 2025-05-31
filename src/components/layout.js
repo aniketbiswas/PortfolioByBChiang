@@ -46,6 +46,45 @@ const Layout = ({ children, location }) => {
     handleExternalLinks();
   }, [isLoading]);
 
+  // Cursor halo effect
+  useEffect(() => {
+    let isMouseMoving = false;
+
+    const handleMouseMove = e => {
+      // Use requestAnimationFrame for smooth performance
+      if (!isMouseMoving) {
+        isMouseMoving = true;
+        requestAnimationFrame(() => {
+          document.body.style.setProperty('--cursor-x', `${e.clientX}px`);
+          document.body.style.setProperty('--cursor-y', `${e.clientY}px`);
+          document.body.classList.add('cursor-visible');
+          isMouseMoving = false;
+        });
+      }
+    };
+
+    const handleMouseLeave = () => {
+      document.body.classList.remove('cursor-visible');
+    };
+
+    const handleMouseEnter = () => {
+      document.body.classList.add('cursor-visible');
+    };
+
+    // Add event listeners with passive option for better performance
+    document.addEventListener('mousemove', handleMouseMove, { passive: true });
+    document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mouseenter', handleMouseEnter);
+
+    // Cleanup function
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('mouseenter', handleMouseEnter);
+      document.body.classList.remove('cursor-visible');
+    };
+  }, []);
+
   return (
     <>
       <Head />

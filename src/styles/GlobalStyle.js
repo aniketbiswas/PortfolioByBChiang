@@ -446,6 +446,43 @@ const GlobalStyle = createGlobalStyle`
   ${TransitionStyles};
 
   ${PrismStyles};
+
+  /* Cursor Halo Effect - Torch/Candle Light */
+  body {
+    --cursor-x: 0px;
+    --cursor-y: 0px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: var(--cursor-y);
+    left: var(--cursor-x);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(
+      circle,
+      /* White center with less gradual but more blurred transitions */
+      rgba(186, 223, 255, 0.13) 0%,
+      rgba(186, 223, 255, 0.06) 24%,
+      rgba(225, 241, 255, 0.015) 40%,
+      rgba(225, 241, 255, 0.004) 56%,
+      rgba(225, 241, 255, 0.001) 72%,
+      transparent 80%
+    );
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+    filter: blur(15px);
+    mix-blend-mode: screen;
+  }
+
+  body.cursor-visible::before {
+    opacity: 0.8;
+  }
 `;
 
 export default GlobalStyle;
