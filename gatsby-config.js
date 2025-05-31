@@ -1,11 +1,12 @@
 const config = require('./src/config');
 
 module.exports = {
+  pathPrefix: '/PortfolioByBChiang',
   siteMetadata: {
     title: 'Aniket Biswas',
     description:
       'Aniket Biswas is a software engineer specializing in building scalable cloud solutions and distributed systems.',
-    siteUrl: 'https://aniketbiswas.com', // No trailing slash allowed!
+    siteUrl: 'https://aniketbiswas.github.io/PortfolioByBChiang', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@aniketbiswas100',
   },
