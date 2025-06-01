@@ -34,6 +34,7 @@ const StyledText = styled.div`
       padding-left: 20px;
       font-family: var(--font-mono);
       font-size: var(--fz-xs);
+      word-break: break-word;
 
       &:before {
         content: '▹';
