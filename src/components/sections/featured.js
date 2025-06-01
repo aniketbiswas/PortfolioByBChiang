@@ -318,8 +318,10 @@ const Featured = () => {
                 childImageSharp {
                   gatsbyImageData(
                     width: 700
+                    height: 438
                     placeholder: DOMINANT_COLOR
-                    formats: [AUTO, WEBP, AVIF]
+                    formats: [AUTO, WEBP]
+                    quality: 90
                   )
                 }
               }
