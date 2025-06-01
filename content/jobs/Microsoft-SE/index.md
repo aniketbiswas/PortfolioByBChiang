@@ -1,5 +1,6 @@
 ---
 date: '2020-07-01'
+endDate: '2023-03-01'
 title: 'Software Engineer'
 company: 'Microsoft'
 location: 'Hyderabad, India'

@@ -1,9 +1,10 @@
 ---
-date: '2021-05-01'
+date: '2017-05-15'
+endDate: '2017-08-31'
 title: 'Software Development Intern'
 company: 'Farebond'
 location: 'Remote'
-range: 'May 2021 - August 2021'
+range: 'May 2017 - August 2017'
 url: 'https://farebond.com/'
 ---
 

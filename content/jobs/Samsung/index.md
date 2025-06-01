@@ -1,5 +1,6 @@
 ---
 date: '2019-05-01'
+endDate: '2019-07-01'
 title: 'Research Intern'
 company: 'Samsung Research Institute'
 location: 'Bengaluru, India'

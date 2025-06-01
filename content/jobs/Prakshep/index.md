@@ -1,9 +1,10 @@
 ---
-date: '2020-01-01'
+date: '2018-05-01'
+endDate: '2018-06-30'
 title: 'Software Engineer Intern'
 company: 'Prakshep'
 location: 'Bengaluru, India'
-range: 'January 2020 - April 2020'
+range: 'May 2018 - June 2018'
 url: 'https://prakshep.com/'
 ---
 
