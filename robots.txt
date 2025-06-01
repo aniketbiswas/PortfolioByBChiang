@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://aniketbiswas.github.io/sitemap-index.xml
+Sitemap: https://aniketbiswas.github.io/aniketbiswas-dev/sitemap-index.xml
 Host: https://aniketbiswas.github.io
