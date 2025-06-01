@@ -33,11 +33,11 @@ self.__precacheManifest = [
     "url": "framework-d640695159b288304a04.js"
   },
   {
-    "url": "app-f4ca44a0113807524714.js"
+    "url": "app-062f148afc68ec29281a.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "c9250005cabb4b884603afdd6fb363b4"
+    "revision": "e4069fb1f23debb1f93448933dccddc7"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-69e2a473a13da6d6a3e2.js"
@@ -48,7 +48,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "12fb82b5de25791db8310d563bc76739"
+    "revision": "858c255c8db6dc7e911a0bfe57d0172c"
   },
   {
     "url": "manifest.webmanifest",
@@ -58,9 +58,9 @@ self.__precacheManifest = [
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.routing.registerRoute(/(\.js$|\.css$|static\/)/, new workbox.strategies.CacheFirst(), 'GET');
-workbox.routing.registerRoute(/^https?:.*\/page-data\/.*\.json/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
+workbox.routing.registerRoute(/^https?:.*\/page-data\/.*\.json/, new workbox.strategies.NetworkFirst(), 'GET');
 workbox.routing.registerRoute(/^https?:.*\.(png|jpg|jpeg|webp|avif|svg|gif|tiff|js|woff|woff2|json|css)$/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
-workbox.routing.registerRoute(/^https?:\/\/fonts\.googleapis\.com\/css/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
+workbox.routing.registerRoute(/^https?:.*\/$/, new workbox.strategies.NetworkFirst(), 'GET');
 
 /* global importScripts, workbox, idbKeyval */
 importScripts(`idb-keyval-3.2.0-iife.min.js`)
@@ -144,7 +144,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/aniketbiswas-dev/app-f4ca44a0113807524714.js`))) {
+  if (!resources || !(await caches.match(`/aniketbiswas-dev/app-062f148afc68ec29281a.js`))) {
     return await fetch(event.request)
   }
 
