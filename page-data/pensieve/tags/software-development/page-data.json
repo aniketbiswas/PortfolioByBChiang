@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-tag-js",
     "path": "/pensieve/tags/software-development/",
     "result": {"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"frontmatter":{"title":"My Medium Articles","description":"Thoughtful articles on software development, philosophy in tech, and personal experiences","date":"2024-12-01T00:00:00.000Z","slug":"/pensieve/medium-articles","tags":["Writing","Philosophy","Software Development","Personal Experience","Medium"]}}}]}},"pageContext":{"tag":"Software Development"}},
-    "staticQueryHashes": ["1994492073","2031412112","2516564142","3825832676"]}
+    "staticQueryHashes": ["1824254791","1994492073","2516564142","3825832676"]}
