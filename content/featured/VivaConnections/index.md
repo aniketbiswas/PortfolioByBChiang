@@ -1,7 +1,7 @@
 ---
 date: '2'
 title: 'Viva Connections Mobile'
-cover: './demo.png'
+cover: ''
 github: ''
 external: 'https://www.microsoft.com/en-us/microsoft-viva/connections'
 tech:

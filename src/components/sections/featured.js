@@ -362,7 +362,8 @@ const Featured = () => {
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
             const { external, title, tech, github, cover, cta } = frontmatter;
-            const image = getImage(cover);
+            // Handle case when cover might be null or undefined
+            const image = cover ? getImage(cover) : null;
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -409,7 +410,7 @@ const Featured = () => {
 
                 <div className="project-image">
                   <a href={external ? external : github ? github : '#'}>
-                    <GatsbyImage image={image} alt={title} className="img" />
+                    {image ? <GatsbyImage image={image} alt={title} className="img" /> : <div />}
                   </a>
                 </div>
               </StyledProject>
