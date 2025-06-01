@@ -87,10 +87,15 @@ const StyledTabButton = styled.button`
   @media (max-width: 600px) {
     ${({ theme }) => theme.mixins.flexCenter};
     min-width: 120px;
-    padding: 0 15px;
+    max-width: 150px; /* Add maximum width constraint */
+    padding: 0 10px; /* Reduce padding for more text space */
     border-left: 0;
     border-bottom: 2px solid var(--lightest-navy);
     text-align: center;
+    white-space: normal; /* Allow text wrapping on mobile */
+    word-break: break-word; /* Break long words if necessary */
+    line-height: 1.2; /* Adjust line height for wrapped text */
+    font-size: var(--fz-xxs); /* Use smaller font size for mobile */
   }
 
   &:hover,
