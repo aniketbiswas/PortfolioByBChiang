@@ -6,7 +6,7 @@ module.exports = {
     title: 'Aniket Biswas',
     description:
       'Aniket Biswas is a software engineer specializing in building scalable cloud solutions and distributed systems.',
-    siteUrl: 'https://aniketbiswas.github.io', // No trailing slash allowed!
+    siteUrl: 'https://aniketbiswas.github.io/aniketbiswas-dev', // Include pathPrefix in the siteUrl
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@aniket__biswas',
   },
