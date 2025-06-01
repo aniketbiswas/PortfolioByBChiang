@@ -27,6 +27,7 @@ const StyledText = styled.div`
     margin: 20px 0 0 0;
     overflow: hidden;
     list-style: none;
+    word-break: break-word;
 
     li {
       position: relative;
