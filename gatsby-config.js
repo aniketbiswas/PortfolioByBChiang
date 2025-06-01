@@ -8,7 +8,7 @@ module.exports = {
       'Aniket Biswas is a software engineer specializing in building scalable cloud solutions and distributed systems.',
     siteUrl: 'https://aniketbiswas.github.io', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
-    twitterUsername: '@aniketbiswas100',
+    twitterUsername: '@aniket__biswas',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -30,7 +30,34 @@ module.exports = {
         icon: 'src/images/pixel-computer.png',
       },
     },
-    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        workboxConfig: {
+          skipWaiting: true,
+          clientsClaim: true,
+          runtimeCaching: [
+            {
+              urlPattern: /(\.js$|\.css$|static\/)/,
+              handler: `CacheFirst`,
+            },
+            {
+              urlPattern: /^https?:.*\/page-data\/.*\.json/,
+              handler: `NetworkFirst`,
+            },
+            {
+              urlPattern:
+                /^https?:.*\.(png|jpg|jpeg|webp|avif|svg|gif|tiff|js|woff|woff2|json|css)$/,
+              handler: `StaleWhileRevalidate`,
+            },
+            {
+              urlPattern: /^https?:.*\/$/,
+              handler: `NetworkFirst`,
+            },
+          ],
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

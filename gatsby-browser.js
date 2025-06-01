@@ -3,3 +3,19 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
+
+// Unregister service worker and clear caches when content changes
+export const onServiceWorkerUpdateReady = () => {
+  const answer = window.confirm(
+    `This site has been updated with new content. ` + `Reload to display the latest version?`,
+  );
+
+  if (answer === true) {
+    window.location.reload();
+  }
+};
+
+// Force service worker to update immediately
+export const onServiceWorkerUpdateFound = () => {
+  window.location.reload(true);
+};
