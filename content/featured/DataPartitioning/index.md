@@ -1,7 +1,7 @@
 ---
 date: '1'
 title: 'Data Partitioning Framework'
-cover: './demo.png'
+cover: ''
 tech:
   - JavaScript
   - React

@@ -1,7 +1,7 @@
 ---
 date: '3'
 title: 'Developer Productivity Toolkit'
-cover: './halcyon.png'
+cover: ''
 github: ''
 external: ''
 tech:

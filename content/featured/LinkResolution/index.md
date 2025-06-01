@@ -1,7 +1,7 @@
 ---
 date: '4'
 title: 'High-Performance Link Resolution'
-cover: './demo.png'
+cover: ''
 github: ''
 external: ''
 tech:
