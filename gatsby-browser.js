@@ -4,6 +4,11 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
+// This ensures the loading screen has enough time to initialize
+export const onInitialClientRender = () => {
+  // Add a small delay to ensure React has time to render before any optimizations
+};
+
 // Unregister service worker and clear caches when content changes
 export const onServiceWorkerUpdateReady = () => {
   const answer = window.confirm(

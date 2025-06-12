@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import anime from 'animejs';
 import styled from 'styled-components';
-import pixelDuckGif from '../images/pixel-duck.gif';
 
 const StyledLoader = styled.div`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -22,7 +21,7 @@ const StyledLoader = styled.div`
     max-width: 150px;
     transition: var(--transition);
     opacity: ${props => (props.isMounted ? 1 : 0)};
-    
+
     img {
       display: block;
       width: 100%;
@@ -32,7 +31,7 @@ const StyledLoader = styled.div`
       animation: pulse 1.2s ease-in-out infinite alternate;
     }
   }
-  
+
   @keyframes pulse {
     from {
       transform: scale(1);
@@ -69,11 +68,13 @@ const Loader = ({ finishLoading }) => {
           opacity: 0,
           zIndex: -1,
         });
-    }, 2000); // Show the duck for 2 seconds before fading
+    }, 2500); // Increased from 2000 to 2500ms to ensure it's visible
   };
 
   useEffect(() => {
-    const timeout = setTimeout(() => setIsMounted(true), 10);
+    const timeout = setTimeout(() => {
+      setIsMounted(true);
+    }, 10);
     animate();
     return () => clearTimeout(timeout);
   }, []);
@@ -83,11 +84,7 @@ const Loader = ({ finishLoading }) => {
       <Helmet bodyAttributes={{ class: `hidden` }} />
 
       <div className="loader-wrapper">
-        <img
-          src={pixelDuckGif}
-          alt="Loading Animation"
-          className="loader-gif"
-        />
+        <img src="/images/pixel-duck.gif" alt="Loading Animation" className="loader-gif" />
       </div>
     </StyledLoader>
   );

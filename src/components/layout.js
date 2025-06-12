@@ -28,6 +28,7 @@ const Layout = ({ children, location }) => {
   };
 
   useEffect(() => {
+    // Only handle external links and hash navigation when loading is complete
     if (isLoading) {
       return;
     }
