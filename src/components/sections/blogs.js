@@ -17,6 +17,11 @@ const StyledBlogsSection = styled.section`
       grid-template-columns: 1fr;
     }
   }
+
+  .more-button {
+    ${({ theme }) => theme.mixins.button};
+    margin: 50px auto 0;
+  }
 `;
 
 const StyledBlog = styled.article`
@@ -98,14 +103,11 @@ const Blogs = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
   const [articles, setArticles] = useState([]);
+  const [visibleArticles, setVisibleArticles] = useState(3);
   const [loading, setLoading] = useState(true);
 
-  // Medium article URLs
-  const mediumUrls = [
-    'https://medium.com/@aniketbiswas/dirty-room-theory-4fb1f0b48bc6',
-    'https://medium.com/@aniketbiswas/ship-of-theseus-and-software-development-3579a1d05eaa',
-    'https://medium.com/@aniketbiswas/my-internship-experience-learning-fun-hard-goodbyes-d9cc64e3213e',
-  ];
+  // Medium username
+  const mediumUsername = 'aniketbiswas';
 
   // Fallback data in case fetching fails
   const fallbackArticles = [
@@ -135,118 +137,74 @@ const Blogs = () => {
     },
   ];
 
-  // Function to fetch article metadata
-  const fetchArticleMetadata = async url => {
-    try {
-      // Use a CORS proxy to fetch the Medium article HTML
-      const proxyUrl = 'https://api.allorigins.win/get?url=';
-      const response = await fetch(`${proxyUrl}${encodeURIComponent(url)}`);
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch article');
-      }
-
-      const data = await response.json();
-      const html = data.contents;
-
-      // Create a temporary DOM element to parse the HTML
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-
-      // Extract metadata from meta tags
-      const getMetaContent = property => {
-        const meta =
-          doc.querySelector(`meta[property="${property}"]`) ||
-          doc.querySelector(`meta[name="${property}"]`);
-        return meta ? meta.getAttribute('content') : null;
-      };
-
-      // Extract title
-      const title =
-        getMetaContent('og:title') ||
-        getMetaContent('twitter:title') ||
-        doc.querySelector('title')?.textContent ||
-        'Medium Article';
-
-      // Extract description
-      const description =
-        getMetaContent('og:description') ||
-        getMetaContent('twitter:description') ||
-        getMetaContent('description') ||
-        'Read this article on Medium';
-
-      // Extract image
-      const image = getMetaContent('og:image') || getMetaContent('twitter:image') || null;
-
-      // Extract publish date from JSON-LD script
-      let publishDate = null;
-      const scripts = doc.querySelectorAll('script[type="application/ld+json"]');
-      for (const script of scripts) {
-        try {
-          const scriptData = JSON.parse(script.textContent);
-          if (scriptData.datePublished) {
-            publishDate = new Date(scriptData.datePublished).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
-            });
-            break;
-          }
-        } catch (e) {
-          // Continue to next script
-        }
-      }
-
-      // Fallback: try to extract date from article content
-      if (!publishDate) {
-        const timeElement = doc.querySelector('time');
-        if (timeElement) {
-          const datetime = timeElement.getAttribute('datetime');
-          if (datetime) {
-            publishDate = new Date(datetime).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
-            });
-          }
-        }
-      }
-
-      return {
-        title: title.trim(),
-        description: description.trim(),
-        image,
-        publishDate: publishDate || 'Published on Medium',
-        url,
-      };
-    } catch (error) {
-      console.error('Error fetching Medium article metadata:', error);
-      return null;
-    }
-  };
-
   useEffect(() => {
-    const fetchAllArticles = async () => {
+    const fetchRssFeed = async () => {
       setLoading(true);
       try {
-        const fetchedArticles = await Promise.all(
-          mediumUrls.map(async (url, index) => {
-            const metadata = await fetchArticleMetadata(url);
-            // If fetch fails, use fallback data
-            return metadata || fallbackArticles[index];
-          }),
+        // Use RSS2JSON service to convert Medium RSS feed to JSON
+        const response = await fetch(
+          `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${mediumUsername}`,
         );
-        setArticles(fetchedArticles);
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch RSS feed');
+        }
+
+        const data = await response.json();
+
+        if (data.status === 'ok') {
+          const mediumPosts = data.items.map(item => {
+            // Extract description without HTML tags
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = item.description;
+            const cleanDescription = tempDiv.textContent || tempDiv.innerText || '';
+            const truncatedDescription = `${cleanDescription.substring(0, 150)  }...`;
+
+            // Extract image from content if thumbnail is empty
+            let imageUrl = item.thumbnail;
+            if (!imageUrl || imageUrl === '') {
+              // Create a temporary div to parse the HTML content
+              const contentDiv = document.createElement('div');
+              contentDiv.innerHTML = item.content || item.description;
+
+              // Look for the first image in the content
+              const firstImage = contentDiv.querySelector('img');
+              if (firstImage && firstImage.src && !firstImage.src.includes('medium.com/_/stat')) {
+                imageUrl = firstImage.src;
+              } else {
+                // If no image in content, use a default Medium image or leave null
+                imageUrl = null;
+              }
+            }
+
+            return {
+              title: item.title,
+              description: truncatedDescription,
+              url: item.link,
+              publishDate: new Date(item.pubDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              }),
+              image: imageUrl,
+            };
+          });
+
+          // Store all articles
+          setArticles(mediumPosts);
+        } else {
+          throw new Error('Invalid RSS feed');
+        }
       } catch (error) {
-        console.error('Error fetching articles:', error);
-        // Use fallback data if all fetches fail
+        console.error('Error fetching Medium articles:', error);
+        // Fall back to hardcoded data if fetch fails
         setArticles(fallbackArticles);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchAllArticles();
+    fetchRssFeed();
   }, []);
 
   useEffect(() => {
@@ -257,6 +215,11 @@ const Blogs = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
+  // Function to handle showing more articles
+  const showMoreArticles = () => {
+    setVisibleArticles(prevVisible => prevVisible + 3);
+  };
+
   return (
     <StyledBlogsSection id="blogs" ref={revealContainer}>
       <h2 className="numbered-heading">Some Things I've Written</h2>
@@ -264,33 +227,43 @@ const Blogs = () => {
       {loading ? (
         <div className="loading">Loading articles...</div>
       ) : (
-        <div className="blogs-grid">
-          {articles.map((article, i) => (
-            <StyledBlog key={i}>
-              <div className="blog-inner">
-                <header>
-                  {article.image && (
-                    <img src={article.image} alt={article.title} className="blog-image" />
-                  )}
+        <>
+          <div className="blogs-grid">
+            {articles.slice(0, visibleArticles).map((article, i) => (
+              <StyledBlog key={i}>
+                <div className="blog-inner">
+                  <header>
+                    {article.image && (
+                      <img src={article.image} alt={article.title} className="blog-image" />
+                    )}
 
-                  <h3 className="blog-title">
-                    <a href={article.url} target="_blank" rel="noopener noreferrer">
-                      {article.title}
-                    </a>
-                  </h3>
+                    <h3 className="blog-title">
+                      <a href={article.url} target="_blank" rel="noopener noreferrer">
+                        {article.title}
+                      </a>
+                    </h3>
 
-                  <div className="blog-description">
-                    <p>{article.description}</p>
-                  </div>
-                </header>
+                    <div className="blog-description">
+                      <p>{article.description}</p>
+                    </div>
+                  </header>
 
-                <footer>
-                  <div className="blog-date">{article.publishDate}</div>
-                </footer>
-              </div>
-            </StyledBlog>
-          ))}
-        </div>
+                  <footer>
+                    <div className="blog-date">{article.publishDate}</div>
+                  </footer>
+                </div>
+              </StyledBlog>
+            ))}
+          </div>
+
+          {visibleArticles < articles.length && (
+            <div style={{ textAlign: 'center' }}>
+              <button className="more-button" onClick={showMoreArticles}>
+                Show More
+              </button>
+            </div>
+          )}
+        </>
       )}
     </StyledBlogsSection>
   );
